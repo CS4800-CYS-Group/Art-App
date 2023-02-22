@@ -53,4 +53,9 @@ public class CysArtAppApplication {
 		}
 	}
 
+	@GetMapping("/subscribe")
+	public String sayHello(@RequestParam(value = "email", defaultValue = "n/a") String email) {
+		return String.format("Thank you for joining, %s.", email);
+	}
+
 }
