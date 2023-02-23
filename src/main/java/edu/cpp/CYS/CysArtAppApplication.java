@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.google.common.base.CharMatcher;
 
 @SpringBootApplication
 @RestController
@@ -66,9 +67,17 @@ public class CysArtAppApplication {
 	public String sayHello(@RequestParam(value = "email", defaultValue = "n/a") String email) {
 		return String.format("Thank you for joining, %s.", email);
 	}
-	
-	
-	
+
+	@GetMapping("/valid")
+	public String validateString(@RequestParam(value = "catga10", defaultValue = "true")String data){
+		boolean result = CharMatcher.javaDigit().matchesAnyOf(data);
+		if(result){
+			return String.format("%s has numbers in it", data);
+		}
+		else{
+			return String.format("%s doesn't have numbers in it", data);
+		}
+	}
 	
 	
 
