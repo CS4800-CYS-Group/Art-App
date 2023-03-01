@@ -26,7 +26,7 @@ public class CysArtAppApplication {
 	{
 		SpringApplication.run(CysArtAppApplication.class, args);
 	}
-	
+	 
 	@GetMapping("/hello")
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) 
 	{
@@ -78,6 +78,7 @@ public class CysArtAppApplication {
 			return String.format("%s doesn't have numbers in it", data);
 		}
 	}
+	
 	
 
 }
