@@ -1,11 +1,12 @@
-package edu.cpp.CYS;
+package edu.cpp.CYS.model;
 
 public class User
 {
 	private long id;
 	private String username = "";
 	
-	User(long id, String username)
+	
+	public User(long id, String username)
 	{
 		this.id = id;
 		this.username = username;
