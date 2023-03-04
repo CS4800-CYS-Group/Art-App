@@ -1,4 +1,4 @@
-package edu.cpp.CYS;
+package edu.cpp.CYS.controller;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
