@@ -1,4 +1,4 @@
-package edu.cpp.CYS;
+package edu.cpp.CYS.service;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -10,6 +10,7 @@ public class ViewConfig implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/hello").setViewName("hello");
 		registry.addViewController("/login").setViewName("login");
+		registry.addViewController("/signup").setViewName("signup");
 	}
 
 }

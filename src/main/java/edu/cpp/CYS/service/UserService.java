@@ -1,7 +1,9 @@
-package edu.cpp.CYS;
+package edu.cpp.CYS.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.cpp.CYS.model.User;
 
 public class UserService
 {
