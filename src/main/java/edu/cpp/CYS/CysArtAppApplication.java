@@ -59,7 +59,6 @@ public class CysArtAppApplication {
 		}
 		catch(Exception e){
 			return String.format("%s Not a valid roll. Should be in 'ndn' format. Example 1d6 ", roll);
-			
 		}
 	}
 
