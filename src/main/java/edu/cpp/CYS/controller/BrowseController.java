@@ -13,4 +13,10 @@ public class BrowseController {
         return "socialMediaView.html";
 
     }
+    
+    @GetMapping("/home")
+    public String getHome(){
+        return "index.html";
+
+    }
 }
