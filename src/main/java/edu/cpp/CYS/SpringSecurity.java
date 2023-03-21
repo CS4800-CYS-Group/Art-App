@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,6 +35,7 @@ public class SpringSecurity {
                                 .requestMatchers("/home").permitAll()
                                 .requestMatchers("/users").hasRole("ADMIN")
                                 .requestMatchers("/user/{id}").permitAll()
+                        
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
@@ -54,4 +56,8 @@ public class SpringSecurity {
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
+    @Bean
+public WebSecurityCustomizer webSecurityCustomizer() {
+    return (web) -> web.ignoring().requestMatchers("/css/**", "/js/**", "/assets/**", "/lib/**", "/favicon.ico");
+}
 }
