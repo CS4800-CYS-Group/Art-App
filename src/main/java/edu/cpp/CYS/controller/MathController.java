@@ -35,5 +35,11 @@ public class MathController
         return String.format("The means is %s", mean);
     }
 
+    //simple math function
+    public double multiply(int a, int b)
+    {
+        return a * b;
+    }
+
 }
 
