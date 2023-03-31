@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div id="Post-badge" class = "" th:fragment="post">
+        <div id="text">
+            <p th:text = "${author}"></p>
+        </div>
+        <div id="media">
+            <img th:src ="@{${img1}}"/>
+            <img th:src ="@{${img2}}"/>
+            <img th:src ="@{${img3}}"/>
+            <img th:src ="@{${img4}}"/>
+        </div>
+    </div>
+</body>
+</html>

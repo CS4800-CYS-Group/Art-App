@@ -25,4 +25,16 @@ public class Role
 
     @ManyToMany(mappedBy="roles")
     private List<U> users;
+
+	public String getName()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setName(String string)
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }
