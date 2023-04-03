@@ -57,7 +57,7 @@ public class SpringSecurity {
     }
     @Bean
 public WebSecurityCustomizer webSecurityCustomizer() {
-    return (web) -> web.ignoring().requestMatchers("/css/**", "/js/**", "/assets/**", "/lib/**");
+    return (web) -> web.ignoring().requestMatchers("/css/**", "/js/**", "/assets/**", "/lib/**", "/favicon.ico", "/static/css/**");
 }
 
 
