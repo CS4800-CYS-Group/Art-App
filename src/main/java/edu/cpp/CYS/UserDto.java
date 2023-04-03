@@ -23,4 +23,40 @@ public class UserDto
     private String email;
     @NotEmpty(message = "Password should not be empty")
     private String password;
+	public String getEmail()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public String getFirstName()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public String getLastName()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public CharSequence getPassword()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void setFirstName(String string)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	public void setLastName(String string)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	public void setEmail(String email2)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -6,5 +6,16 @@
 </head>
 <body>
     <p th:text = "${landing}">User not found!</p>
+    <div th:each="post : ${posts.tweets}">
+         <div id="text">
+            <p th:text = "${post.user.name}"></p>
+            <p th:text = "${post.full_text}"></p>
+        </div>
+        <div id="media">
+            
+        </div>
+    
+    </div>
+    
 </body>
 </html>

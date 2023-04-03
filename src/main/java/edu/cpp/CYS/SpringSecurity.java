@@ -33,14 +33,13 @@ public class SpringSecurity {
                                 .requestMatchers("/").permitAll()
                                 .requestMatchers("/browse").permitAll()
                                 .requestMatchers("/home").permitAll()
-                                .requestMatchers("/users").hasRole("ADMIN")
                                 .requestMatchers("/user/{id}").permitAll()
                         
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/users")
+                                .defaultSuccessUrl("/browse")
                                 .permitAll()
                 ).logout(
                         logout -> logout
@@ -60,4 +59,6 @@ public class SpringSecurity {
 public WebSecurityCustomizer webSecurityCustomizer() {
     return (web) -> web.ignoring().requestMatchers("/css/**", "/js/**", "/assets/**", "/lib/**", "/favicon.ico", "/static/css/**");
 }
+
+
 }

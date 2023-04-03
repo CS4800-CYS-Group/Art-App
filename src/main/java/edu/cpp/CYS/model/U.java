@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Getter
@@ -38,5 +39,58 @@ public class U
             joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
             inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
     private List<Role> roles = new ArrayList<>();
+
+	public static long getSerialversionuid()
+	{
+		return serialVersionUID;
+	}
+
+	public String getEmail()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getPassword()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Collection<Role> getRoles()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setName(String string)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setEmail(String email2)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setRoles(List<Role> asList)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setPassword(String encode)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String getName()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

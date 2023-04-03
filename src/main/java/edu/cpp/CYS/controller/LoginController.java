@@ -63,7 +63,7 @@ public class LoginController {
     public String users(Model model){
         List<UserDto> users = userService.findAllUsers();
         model.addAttribute("users", users);
-        return "users";
+        return "us";
     }
 
      // handler method to handle login request
