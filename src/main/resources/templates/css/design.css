@@ -1,0 +1,58 @@
+html * {
+    font-family: "Comic Sans MS", "Comic Sans", "cursive";
+}
+
+body {
+    background-color: rgba(231, 225, 225, 0.25);
+}
+
+.card {
+    border: 4px solid rgba(255, 87, 51, 0.25);
+    border-radius: 25px;
+}
+
+.card-header, .card-body {
+    border-style: none;
+    border-radius: inherit;
+}
+
+.card-header {
+    border-radius: 25px 25px 0px 0px;
+}
+
+.card-body {
+    border-radius: 0px 0px 25px 25px;
+}
+
+
+.artistPostImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.postWidget {
+    text-align: right;
+}
+
+.btn-icon {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+/* Darker background on mouse-over */
+.material-symbols-outlined:hover {
+    background-color: rgba(113, 121, 126, 1);
+}
+
+.btn-icon:focus {
+    border: none;
+    outline: none;
+}
