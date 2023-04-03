@@ -12,7 +12,29 @@
             <p th:text = "${post.full_text}"></p>
         </div>
         <div id="media">
-            
+	        <table>
+			  <!--Just apply style to table if easier, lazy way of getting this in for presentation, will change maybe-->
+				<tbody th:if="${post.media.size() == 0}"></tbody>
+
+				<tbody th:if="${post.media.size() == 1}">
+					<tr>
+						<td>
+							<img th:src="@{${post.media.get(0).media_url}}" width ="200" height="200" />
+						</td>
+					</tr>
+				</tbody>
+				<tbody th:if="${post.media.size() >= 2}">
+					<tr>
+						<td>
+							<img th:src="@{${post.media.get(0).media_url}}" width ="200" height="200" />
+						</td>
+						<td>
+							<img th:src="@{${post.media.get(1).media_url}}" width ="200" height="200" />
+						</td>
+					</tr>
+				</tbody>
+             
+			</table>    
         </div>
     
     </div>
