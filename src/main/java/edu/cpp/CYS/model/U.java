@@ -1,19 +1,11 @@
 package edu.cpp.CYS.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="users")
 public class U
@@ -40,57 +32,52 @@ public class U
             inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
     private List<Role> roles = new ArrayList<>();
 
-	public static long getSerialversionuid()
+	public U() {
+    }
+
+    public static long getSerialversionuid()
 	{
 		return serialVersionUID;
 	}
 
-	public String getEmail()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getPassword()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Collection<Role> getRoles()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String string)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setEmail(String email2)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setRoles(List<Role> asList)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setPassword(String encode)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getName()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
 }
