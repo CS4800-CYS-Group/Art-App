@@ -2,13 +2,38 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-body {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+html * {
+    font-family: "Comic Sans MS", "Comic Sans", "cursive";
 }
 
-.bd-placeholder-img + rect {
-    fill: #F89880;
+body {
+    background-color: rgba(231, 225, 225, 0.25);;
+    margin: 0;
+    padding-top: 0px;
+}
+
+/*https://stackoverflow.com/questions/24089363/remove-white-space-above-nav-bar*/
+.navbar {
+    background-color: rgba(255, 182, 193, 0.75);
+    overflow: hidden;
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-brand, a.nav-link, .navbar-dark .navbar-nav .active>.nav-link {
+    color: rgba(113, 121, 126, 1);
+    font-weight: bold;
+}
+
+/*body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: #5a5a5a;
+}*/
+
+.btn-secondary {
+    background-color: #F89880;
+    border-color: #F89880;
 }
 
 .artist_img {
@@ -22,6 +47,22 @@ body {
     width: 400px;
     border-radius: 30px;
 }
+
+.bd-placeholder-img + rect {
+    fill: #F89880;
+}
+
+/*.artist_img {
+    border-radius: 50%;
+    height: 140px;
+    width: 140px;
+}
+
+.feature_img {
+    height: 400px;
+    width: 400px;
+    border-radius: 30px;
+}*/
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -115,5 +156,11 @@ body {
 @media (min-width: 62em) {
     .featurette-heading {
         margin-top: 7rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 0px;
     }
 }

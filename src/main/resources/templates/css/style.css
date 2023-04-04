@@ -9,6 +9,7 @@ html * {
 body {
     background-color: rgba(231, 225, 225, 0.25);;
     margin: 0;
+    padding-top: 0px;
 }
 
 /*https://stackoverflow.com/questions/24089363/remove-white-space-above-nav-bar*/

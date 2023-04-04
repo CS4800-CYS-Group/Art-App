@@ -24,6 +24,20 @@ body {
     border-radius: 0px 0px 25px 25px;
 }
 
+.navbar {
+    background-color: rgba(255, 182, 193, 0.75);
+}
+
+.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-brand, a.nav-link {
+    color: rgba(113, 121, 126, 1);
+    font-weight: bold;
+    font-family: "Comic Sans MS", "Comic Sans", "cursive";
+}
+
+.btn-secondary {
+    background-color: #F89880;
+    border-color: #F89880;
+}
 
 .artistPostImg {
     width: 50px;
