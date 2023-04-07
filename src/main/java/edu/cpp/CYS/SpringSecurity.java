@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+
+
 @Configuration
 @EnableWebSecurity
 public class SpringSecurity {
@@ -27,25 +29,29 @@ public class SpringSecurity {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/").permitAll()
                                 .requestMatchers("/browse").permitAll()
                                 .requestMatchers("/home").permitAll()
                                 .requestMatchers("/user/{id}").permitAll()
-                        
+                                .requestMatchers("/user/demonky").permitAll()
+                                .requestMatchers("/us/**").authenticated()
+                                .requestMatchers("/us/{email}").authenticated()
+                                
+
                 ).formLogin(
-                        form -> form
-                                .loginPage("/login")
-                                .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/browse")
-                                .permitAll()
-                ).logout(
-                        logout -> logout
-                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                                .permitAll()
-                );
+                form -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .successHandler(new CustomAuthenticationSuccessHandler())
+                        .permitAll()
+        ).logout(
+                logout -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .permitAll()
+        );
         return http.build();
     }
 
@@ -54,11 +60,11 @@ public class SpringSecurity {
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
+
     }
     @Bean
 public WebSecurityCustomizer webSecurityCustomizer() {
     return (web) -> web.ignoring().requestMatchers("/css/**", "/js/**", "/assets/**", "/lib/**", "/favicon.ico", "/static/css/**");
 }
-
 
 }
