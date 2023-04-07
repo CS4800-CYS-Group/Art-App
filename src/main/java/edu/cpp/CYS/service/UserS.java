@@ -8,7 +8,9 @@ import edu.cpp.CYS.model.U;
 public interface UserS {
     void saveUser(UserDto userDto);
 
-    U findUserByEmail(String email);
+    U findUserByUsername(String username);
 
     List<UserDto> findAllUsers();
+
+
 }

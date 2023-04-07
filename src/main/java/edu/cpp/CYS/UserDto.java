@@ -3,6 +3,11 @@ package edu.cpp.CYS;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
+/**
+ * Data Transfer Object (DTO) that represents a User in a way that is optimized for transferring
+ * the data between layers of the application or between different applications, without exposing
+ * the underlying implementation details.
+ */
 
 public class UserDto
 {
@@ -16,6 +21,19 @@ public class UserDto
     private String email;
     @NotEmpty(message = "Password should not be empty")
     private String password;
+	 @NotEmpty
+	 private String username;
+
+	public UserDto(@NotEmpty String firstName, @NotEmpty String lastName,
+			@NotEmpty(message = "Email should not be empty") @Email String email,
+			@NotEmpty(message = "Password should not be empty") String password, @NotEmpty String username) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.username = username;
+	}
+
 	public UserDto() {
 	}
 	public String getFirstName() {
@@ -42,11 +60,11 @@ public class UserDto
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Long getId() {
-		return id;
+	public String getUsername(){
+		return username;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setUsername(String username){
+		this.username = username;
 	}
 	
 
