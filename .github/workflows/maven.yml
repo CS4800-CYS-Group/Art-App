@@ -35,10 +35,8 @@ jobs:
       with:
         path: './src/main/resources/application.properties'
         property: |
-          'spring.datasource.username'
           'spring.datasource.password'
         value: |
-          ${{ secrets.DB_USER }}
           ${{ secrets.DB_PWD }}
     
     - name: Build with Maven
