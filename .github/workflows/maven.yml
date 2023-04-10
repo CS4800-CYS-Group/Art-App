@@ -29,15 +29,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-        
-    - name: Write value of db user to Properties-file
-      uses: christian-draeger/write-properties@1.1.0
-      with:
-        path: './src/main/resources/application.properties'
-        property: |
-          'spring.datasource.username'
-        value: |
-          ${{ secrets.DB_USER }}
     
     - name: Write value of db pwd to Properties-file
       uses: christian-draeger/write-properties@1.1.0
