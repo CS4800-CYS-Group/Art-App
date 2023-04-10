@@ -65,21 +65,17 @@ public class LoginController {
         userService.saveUser(userDto);
         return "redirect:/register?success";
     }
+    // handler method to handle list of users
     @GetMapping("/us/{username}")
-    public String users(@PathVariable String username, Model model, HttpSession session) {
-        String authenticatedUser = (String) session.getAttribute("username");
-
-        if (authenticatedUser != null && authenticatedUser.equals(username)) {
-            // User is authenticated, show personalized content
-            U user = userService.findUserByUsername(username);
+    public String users(@PathVariable String username, Model model) {
+        U user = userService.findUserByUsername(username);
+        if(user != null) {
             model.addAttribute("username", username);
             model.addAttribute("user", user);
             model.addAttribute("welcomeMessage", "Welcome, " + user.getUsername() + "!");
-            return "us";
-        } else {
-            // User is not authenticated, show login page
-            return "redirect:/login";
+        return "us";
         }
+        return "redirect:/login";
     }
 
      // handler method to handle login request

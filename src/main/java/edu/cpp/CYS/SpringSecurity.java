@@ -45,7 +45,6 @@ public class SpringSecurity {
                                         .requestMatchers("/user/{id}").permitAll()
                                         .requestMatchers("/user/demonky").permitAll()
                                         .requestMatchers("/us/**").authenticated()
-                                        .requestMatchers("/us/{email}").authenticated()
 
 
                         ).formLogin(
