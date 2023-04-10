@@ -30,7 +30,8 @@ public class U
 	public U() {
     }
 
-	public U(String email, String username, String password, String firstName, String lastName) {
+	public U(Long id, String email, String username, String password, String firstName, String lastName) {
+        this.id = id;
 		this.email = email;
         this.username = username;
 		this.password = password;
@@ -74,6 +75,14 @@ public class U
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }
