@@ -39,7 +39,7 @@ jobs:
           'spring.datasource.password'
         value: |
           ${{ secrets.DB_USER }}
-          ${{ secrets.DB_PWD}}
+          ${{ secrets.DB_PWD }}
     
     - name: Build with Maven
       #env: 
