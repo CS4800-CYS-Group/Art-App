@@ -31,9 +31,9 @@ jobs:
         cache: maven
         
     - name: Build with Maven
-      env:
-        #DB_USER: ${{ secrets.DB_USER }}
+      env: 
         DB_PWD: ${{ secrets.DB_PWD }}
+        #DB_USER: ${{ secrets.DB_USER }}
       run: mvn -B package --file pom.xml
 
 # Note for AWS: 
