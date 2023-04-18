@@ -61,6 +61,12 @@ body {
     -moz-box-shadow: none;
 }
 
+/*Make Load Button Better*/
+#loadMoreBtn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 /* Darker background on mouse-over */
 .material-symbols-outlined:hover {
     background-color: rgba(113, 121, 126, 1);
