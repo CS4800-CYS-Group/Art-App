@@ -12,9 +12,9 @@ public class Subscriber {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int subscriberId;
     private String firstName;
-    @Id
+
     private String lastName;
-    @Id
+
     private String email;
 
 
