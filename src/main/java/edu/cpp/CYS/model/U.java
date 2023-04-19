@@ -1,5 +1,7 @@
 package edu.cpp.CYS.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -27,16 +29,20 @@ public class U
     @Column(nullable=false)
     private String username;
 
+    @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+    private List<Photo> photos;
+
 	public U() {
     }
 
-	public U(Long id, String email, String username, String password, String firstName, String lastName) {
+	public U(Long id, String email, String username, String password, String firstName, String lastName, List<Photo> photos) {
         this.id = id;
 		this.email = email;
         this.username = username;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+        this.photos = photos;
 	}
 
     public String getUsername() {
@@ -83,6 +89,14 @@ public class U
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
     }
 
 }
