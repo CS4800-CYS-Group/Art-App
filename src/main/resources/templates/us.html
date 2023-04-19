@@ -19,5 +19,18 @@
       <li><a href="/update-profile">Update Profile</a></li>
       <li><a href="/logout">Logout</a></li>
     </ul>
+
+    <form th:action="@{/us/{username}/photos/upload(username=${username})}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required />
+        <input type="text" name="title" placeholder="Title" required />
+        <input type="text" name="description" placeholder="Description" required />
+        <button type="submit">Upload</button>
+    </form>
+
+    <div th:each="photo : ${photos}">
+      <img th:src="@{'/photos/' + ${photo.id}}" />
+      <div th:text="${photo.title}" />
+      <div th:text="${photo.description}" />
+  </div>   
   </body>
 </html>
