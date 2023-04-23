@@ -19,4 +19,10 @@ public class BrowseController {
         return "index.html";
 
     }
+
+    @GetMapping("/test")
+    public String getTest(){
+        return "userHomePage.html";
+
+    }
 }
