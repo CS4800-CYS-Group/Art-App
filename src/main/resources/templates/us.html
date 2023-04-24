@@ -7,26 +7,27 @@
   </head>
   <body>
     <h1 th:text="${welcomeMessage}"></h1>
-    <p>Here is some information about your account:</p>
-    <ul>
-      <li>Email: [[${email}]]</li>
-      <li>Account Created: [date created]</li>
-      <li>Last Login: [last login date]</li>
-    </ul>
-    <p>Here are some options for managing your account:</p>
-    <ul>
-      <li><a href="/change-password">Change Password</a></li>
-      <li><a href="/update-profile">Update Profile</a></li>
-      <li><a href="/logout">Logout</a></li>
-    </ul>
-
-    <form th:action="@{/us/{username}/photos/upload(username=${username})}" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" required />
-        <input type="text" name="title" placeholder="Title" required />
-        <input type="text" name="description" placeholder="Description" required />
-        <button type="submit">Upload</button>
-    </form>
-
+    <div th:if="${isUser == true}">
+	    <p>Here is some information about your account:</p>
+	    <ul>
+	      <li>Email: [[${email}]]</li>
+	      <li>Account Created: [date created]</li>
+	      <li>Last Login: [last login date]</li>
+	    </ul>
+	    <p>Here are some options for managing your account:</p>
+	    <ul>
+	      <li><a href="/change-password">Change Password</a></li>
+	      <li><a href="/update-profile">Update Profile</a></li>
+	      <li><a href="/logout">Logout</a></li>
+	    </ul>
+	
+	    <form th:action="@{/us/{username}/photos/upload(username=${username})}" method="post" enctype="multipart/form-data">
+	        <input type="file" name="file" required />
+	        <input type="text" name="title" placeholder="Title" required />
+	        <input type="text" name="description" placeholder="Description" required />
+	        <button type="submit">Upload</button>
+	    </form>
+	</div>
     <div th:each="photo : ${photos}">
       <img th:src="@{'/photos/' + ${photo.id}}" />
       <div th:text="${photo.title}" />
