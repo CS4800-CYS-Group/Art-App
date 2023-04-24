@@ -12,5 +12,7 @@ public interface UserS {
 
     List<UserDto> findAllUsers();
 
+    public List<U> searchUsers(String query);
+
 
 }

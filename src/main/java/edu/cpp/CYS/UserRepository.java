@@ -1,5 +1,7 @@
 package edu.cpp.CYS;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import edu.cpp.CYS.model.U;
@@ -8,5 +10,6 @@ import edu.cpp.CYS.model.U;
 public interface UserRepository extends JpaRepository<U, Long> {
 
     U findByUsername(String username);
+    List<U> findByUsernameContainingIgnoreCase(String username);
 
 }

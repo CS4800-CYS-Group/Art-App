@@ -45,6 +45,7 @@ public class SpringSecurity {
                                         .requestMatchers("/home").permitAll()
                                         .requestMatchers("/user/{id}").permitAll()
                                         .requestMatchers("/user/demonky").permitAll()
+                                        .requestMatchers("/search").permitAll()
                                         .requestMatchers("/us/**").authenticated()
                                         .requestMatchers("/us/*/photos/upload").permitAll()
                                         .anyRequest().permitAll()

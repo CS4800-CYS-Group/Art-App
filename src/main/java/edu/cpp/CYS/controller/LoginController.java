@@ -2,6 +2,11 @@ package edu.cpp.CYS.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -47,6 +52,13 @@ public class LoginController {
     	}
     	model.addAttribute("sessionMessages", messages);
         return "index";
+    }
+
+    @GetMapping("/search")
+    public String searchUsers(@RequestParam String query, Model model) {
+        List<U> users = userService.searchUsers(query);
+        model.addAttribute("users", users);
+        return "search";
     }
 
     @GetMapping("/register")

@@ -1,0 +1,22 @@
+<!-- search-results.html -->
+<h1>Search Results</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <!-- add any other columns you want to display -->
+    </tr>
+  </thead>
+  <tbody>
+    <!-- iterate over the list of users and display their information -->
+    <tr th:each="user : ${users}">
+      <td th:text="${user.username}"></td>
+      <td th:text="${user.email}"></td>
+      <td>
+         <a th:href="@{'/us/' + ${user.username}}" class="btn btn-primary">View Profile</a>
+       </td>
+    </tr>
+  </tbody>
+</table>
