@@ -1,21 +1,12 @@
 package edu.cpp.CYS.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import edu.cpp.CYS.UserDto;
-//import edu.cpp.CYS.RoleRepository;
 import edu.cpp.CYS.UserRepository;
-//import edu.cpp.CYS.model.Role;
 import edu.cpp.CYS.model.U;
-import edu.cpp.CYS.model.User;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 @Service
@@ -47,6 +38,10 @@ public class UserServiceImpl implements UserS {
     public U findUserByUsername(String username) {
         U user = userRepository.findByUsername(username);
         return user;
+    }
+
+    public List<U> searchUsers(String query) {
+        return userRepository.findByUsernameContainingIgnoreCase(query);
     }
 
     @Override
