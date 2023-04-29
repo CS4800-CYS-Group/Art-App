@@ -35,6 +35,11 @@ public class UserServiceImpl implements UserS {
     }
 
     @Override
+    public void saveUser(U user){
+        userRepository.save(user);
+    }
+
+    @Override
     public U findUserByUsername(String username) {
         U user = userRepository.findByUsername(username);
         return user;
@@ -59,5 +64,23 @@ public class UserServiceImpl implements UserS {
         userDto.setEmail(user.getEmail());
         userDto.setUsername(user.getUsername());
         return userDto;
-    }   
+    }  
+    
+    public void follow(U currentUser, U targetUser) {
+        currentUser.getFollowing().add(targetUser);
+        targetUser.getFollowers().add(currentUser);
+        userRepository.save(currentUser);
+        userRepository.save(targetUser);
+      }
+      
+      public void unfollow(U currentUser, U targetUser) {
+        currentUser.getFollowing().remove(targetUser);
+        targetUser.getFollowers().remove(currentUser);
+        userRepository.save(currentUser);
+        userRepository.save(targetUser);
+      }
+
+      public List<U> getFollowingList(U currentUser) {
+  return currentUser.getFollowing();
+}
 }

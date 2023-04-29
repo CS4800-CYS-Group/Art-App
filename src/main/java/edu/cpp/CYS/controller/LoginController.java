@@ -9,6 +9,10 @@ import jakarta.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -37,10 +41,10 @@ public class LoginController {
     private UserS userService;
     private PhotoRepository photoRepository;
 
-    public LoginController(UserS userService, PhotoRepository photoRepository) {
-        this.userService = userService;
-        this.photoRepository = photoRepository;
-    }
+   public LoginController(UserS userService, PhotoRepository photoRepository){
+    this.userService = userService;
+    this.photoRepository = photoRepository;
+   }
     // handler method to handle home page request
     @GetMapping("/")
     public String home(Model model, HttpSession session){
@@ -110,10 +114,14 @@ public class LoginController {
           model.addAttribute("username", username);
           model.addAttribute("user", user);
           List<Photo> photos = photoRepository.findByUser(user);
+          model.addAttribute("profilePicture", user.getProfilePicture());
           model.addAttribute("photos", photos);
           model.addAttribute("photo", new Photo());
           model.addAttribute("welcomeMessage", "Welcome, " + user.getUsername() + "!");
           model.addAttribute("isUser", isUser);
+          List<U> following = user.getFollowing();
+          model.addAttribute("following", following);
+          
           return "us";
       }
       return "redirect:/login";
@@ -143,6 +151,51 @@ public class LoginController {
 	    // Redirect to the user page
 	    return "redirect:/us/" + username;
 	}
+
+    @PostMapping("/us/{username}/saveProfilePicture")
+public String saveProfilePicture(@RequestParam("profilePicture") MultipartFile file,
+                                 @PathVariable("username") String username)  throws IOException {
+    U currentUser = userService.findUserByUsername(username);
+    if(currentUser == null) {
+        throw new RuntimeException("User not found");
+    }
+
+    if(!file.isEmpty()) {
+        byte[] bytes = file.getBytes();
+        currentUser.setProfilePicture(bytes);
+        userService.saveUser(currentUser);
+    }
+
+    return "redirect:/us/" + username;
+}
+
+@GetMapping("/us/{username}/profile-picture")
+public ResponseEntity<byte[]> getProfilePicture(@PathVariable("username") String username) {
+    U currentUser = userService.findUserByUsername(username);
+    byte[] profilePicture = currentUser.getProfilePicture();
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.IMAGE_JPEG); // change to the correct MIME type for your image
+    headers.setContentLength(profilePicture.length);
+    return new ResponseEntity<>(profilePicture, headers, HttpStatus.OK);
+}
+
+
+    @PostMapping("/us/{username}/follow")
+    public String followUser(@PathVariable String username, HttpServletRequest request) {
+        U follower = userService.findUserByUsername((String) request.getSession().getAttribute("username"));
+        U following = userService.findUserByUsername(username);
+        userService.follow(follower, following);
+        return "redirect:/us/" + username;
+    }
+
+    @PostMapping("/us/{username}/unfollow")
+    public String unfollowUser(@PathVariable String username, HttpServletRequest request) {
+        U follower = userService.findUserByUsername((String) request.getSession().getAttribute("username"));
+        U following = userService.findUserByUsername(username);
+        userService.unfollow(follower, following);
+        return "redirect:/us/" + username;
+    }
+    
 
      // handler method to handle login request
      @RequestMapping(value = "/login", produces = "application/json", 
