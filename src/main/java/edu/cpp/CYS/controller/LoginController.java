@@ -113,11 +113,12 @@ public class LoginController {
       if(user != null) {
           model.addAttribute("username", username);
           model.addAttribute("user", user);
+          model.addAttribute("name", user.getFirstName());
           List<Photo> photos = photoRepository.findByUser(user);
           model.addAttribute("profilePicture", user.getProfilePicture());
           model.addAttribute("photos", photos);
           model.addAttribute("photo", new Photo());
-          model.addAttribute("welcomeMessage", "Welcome, " + user.getUsername() + "!");
+          model.addAttribute("welcomeMessage", user.getFirstName() + "'s Home Page");
           model.addAttribute("isUser", isUser);
           List<U> following = user.getFollowing();
           model.addAttribute("following", following);
