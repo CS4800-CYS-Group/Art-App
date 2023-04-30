@@ -92,3 +92,10 @@ figure {
     border: 2px solid rgba(255, 87, 51, 0.25);
 }
 
+#followingRows {
+    display: flex;
+    flex-wrap: nowrap !important;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
