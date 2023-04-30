@@ -177,9 +177,9 @@
                           Following
                         </a>
 
-                        <div class="dropdown-menu p-2 overflow-auto" aria-labelledby="dropdownMenuLink">
-                          <ul class="list-group p-2 w-100">
-                            <li class="list-group-item list-group-item-action p-3" th:each="followedUser : ${following}">
+                        <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
+                          <ul class="list-group p-2">
+                            <li class="list-group-item list-group-item-action p-2 m-1" th:each="followedUser : ${following}">
                               <div id="followingRows" class="row m-1">
                                 <div class="col-5">
                                   <a th:href="@{/us/{username}(username=${followedUser.getUsername()})}"
@@ -187,12 +187,12 @@
                                 </div>
                                 <div class="col">
                                   <form th:action="@{/us/{username}/follow(username=${username})}" method="post">
-                                    <button class="btn btn-secondary" type="submit">Follow</button>
+                                    <button class="btn btn-secondary p-1" type="submit">Follow</button>
                                   </form>
                                 </div>
                                 <div class="col">
                                   <form th:action="@{/us/{username}/unfollow(username=${username})}" method="post">
-                                    <button class="btn btn-secondary" type="submit">Unfollow</button>
+                                    <button class="btn btn-secondary p-1" type="submit">Unfollow</button>
                                   </form>
                                 </div>
                               </div>
