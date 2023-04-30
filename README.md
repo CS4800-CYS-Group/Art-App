@@ -1,4 +1,4 @@
-![Logo](https://github.com/CS4800-CYS-Group/Art-App/blob/main/cys_logo.png)
+![Logo](https://github.com/CS4800-CYS-Group/Art-App/blob/main/cys_logo_2.png)
 
 
 # ART APP
