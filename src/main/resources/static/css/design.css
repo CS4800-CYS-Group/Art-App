@@ -99,3 +99,7 @@ figure {
     margin-left: -15px;
 }
 
+th, td {
+    padding: 0 15px;
+}
+

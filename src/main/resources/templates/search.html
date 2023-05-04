@@ -1,16 +1,18 @@
 <!-- search-results.html -->
+<!--
 <h1>Search Results</h1>
+
 
 <table>
   <thead>
     <tr>
       <th>Username</th>
       <th>Email</th>
-      <!-- add any other columns you want to display -->
+      &lt;!&ndash; add any other columns you want to display &ndash;&gt;
     </tr>
   </thead>
   <tbody>
-    <!-- iterate over the list of users and display their information -->
+    &lt;!&ndash; iterate over the list of users and display their information &ndash;&gt;
     <tr th:each="user : ${users}">
       <td th:text="${user.username}"></td>
       <td th:text="${user.email}"></td>
@@ -20,3 +22,137 @@
     </tr>
   </tbody>
 </table>
+-->
+
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User Page </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link th:href="@{/css/design.css}" rel="stylesheet">
+  <link th:href="@{/css/style.css}" rel="stylesheet">
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <!--Icon-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <!-- Plugins CSS -->
+  <!--<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/OverlayScrollbars-master/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/tiny-slider/dist/tiny-slider.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/choices.js/public/assets/styles/choices.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/glightbox-master/dist/css/glightbox.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/dropzone/dist/dropzone.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/flatpickr/dist/flatpickr.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/plyr/plyr.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/zuck.js/dist/zuck.min.css">-->
+
+  <style>
+    .material-symbols-rounded {
+      font-variation-settings:
+              'FILL' 1,
+              'wght' 700,
+              'GRAD' 200,
+              'opsz' 48
+    }
+  </style>
+
+
+</head>
+
+<nav class="navbar navbar-expand-md navbar-dark">
+  <a class="navbar-brand" href="/home" ><span class="material-symbols-rounded">home</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/us/{username}(username=${session.username})}"><span class="material-symbols-rounded">account_circle</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><span class="material-symbols-rounded">notifications</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><span class="material-symbols-rounded">mail</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><span class="material-symbols-rounded">bookmark</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/browse"><span class="material-symbols-rounded">person</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout"><span class="material-symbols-rounded">logout</span></a>
+      </li>
+    </ul>
+
+    <form class="navbar-form navbar-left" action="/search" method = "GET">
+      <div class="input-group">
+        <input type="text" name="query" placeholder = "Search">
+        <div class="input-group-btn">
+          <button type="submit" class="btn btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>
+
+<body>
+<br>
+<div class="container" id="main-container">
+  <div class="card">
+    <div class="card-body">
+      <table>
+        <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Profile</th>
+          <!-- add any other columns you want to display -->
+        </tr>
+        </thead>
+        <tbody>
+        <!-- iterate over the list of users and display their information -->
+        <tr th:each="user : ${users}">
+          <td th:text="${user.username}"></td>
+          <td th:text="${user.email}"></td>
+          <td>
+            <a th:href="@{'/us/' + ${user.username}}" class="btn btn-primary">View Profile</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div> <!-- End of main container -->
+
+<!--    <div th:each="photo : ${photos}">
+      <img th:src="@{'/photos/' + ${photo.id}}" />
+      <div th:text="${photo.title}" />
+      <div th:text="${photo.description}" />
+    </div>
+   </div>-->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
