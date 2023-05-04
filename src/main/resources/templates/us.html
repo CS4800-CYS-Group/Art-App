@@ -63,7 +63,7 @@
               <a class="nav-link" href="/browse"><span class="material-symbols-rounded">person</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><span class="material-symbols-rounded">logout</span></a>
+              <a class="nav-link" href="/logout"><span class="material-symbols-rounded">logout</span></a>
             </li>
           </ul>
     
@@ -90,7 +90,7 @@
               <div class="col-md-2">
                 <figure class="figure">
                   <img th:if = "${user.profilePicture != null}" th:src= "@{/us/{username}/profile-picture(username=${user.username})}" class="figure-img img-fluid" alt="...">
-                  <figcaption class="figure-caption text-center">Selly<br>&#64;Artist Handle</figcaption>
+                  <figcaption class="figure-caption text-center"><a th:if = "${user.username != null}" th:href="@{/us/{username}(username=${user.getUsername()})}" th:text="'@'+ ${user.getUsername()}"></a></figcaption>
                 </figure>
               </div>
               <div class="col-md-8">
